@@ -1,0 +1,202 @@
+/*     Wannaku Amelia   *
+*      06/10/2022       *
+*         4H            *
+*  record carica stampa */
+
+#include <stdio.h>     //libreria input output (printf, scanf)
+#include <stdlib.h>                                 
+/*dichiarazione funzione e costanti di tutte le utilita' generale: 
+allocazione della memoria e controllo dei processi*/
+#include <time.h>     									//libreria per generare numeri random
+#include <string.h>
+#define N 5                                            //N costante per numero di record
+#define V 8
+#define C 20                                           //C costante carattere del mese e per caratteri del cognome
+                  
+struct s_data                                         //struct data di nascita dell'alunno
+{
+    int giorno;
+	char mese[C];                                   
+	int anno;	
+}typedef s_data;
+
+struct s_alunno                                       //struct delle informazioni dell'alunno 
+{
+	int matricola;
+	char cognome[C];
+	s_data nascita;
+	int voti [V];
+}typedef s_alunno;
+
+void carica(s_alunno t[]);                             //carico i dati dello studente
+void stampa(s_alunno t[]);                            //carico i dati dello studente
+void media(s_alunno t[]);                              //stampo la media degli alunni
+int TrovaVotoAlto(s_alunno t[]);                      //trovo il voto piu' alto e stampare lo studente il primo col voto piu' alto
+void M_cog(s_alunno t[]);                             //convertire il primo carattere deve essere maiuscolo e le restanti in minuscolo
+int ricercamatricola(s_alunno t[],int );              //ricerca la matricola chiesta dall'utente
+int ricercacognome(s_alunno t[],char[]);			//ricerca cognome dell'alunno chiesta dall'utente
+void ordinacognome(s_alunno t[]);					//ordina i cognomi degli studenti
+
+
+int main()
+{
+	int r,a;
+	char st[N];
+	s_alunno tab[N];                                 //record
+	srand(time(NULL));                              //i voti generati casualmente 
+	carica(tab);									//carica cognomi, data di nascita e voti degli studenti
+	stampa(tab);									//stampa cognomi, data di nascita e voti degli studenti
+	M_cog(tab);
+	r=TrovaVotoAlto(tab);
+	printf("\nLa matricola di posizione %d ha il voto piu' alto\n", r);
+	printf("\nInserire numero di matricola vuoi cercare\n");
+	scanf("%d", &a);
+	r=ricercamatricola(tab, a);
+	printf("\nLa matricola %d si trova in posizione %d \n", a,r);
+	printf("\nInserire il cognome della matricola vuoi cercare\n");
+	scanf("%s", st);
+	r=ricercacognome(tab,st);
+	printf("\nLa matricola %s si trova in posizione %d \n", st,r);
+	ordinacognome(tab);
+}
+
+void carica(s_alunno t[])                          	//carica cognomi, data di nascita e voti degli studenti
+{
+	int i,j;
+	for(i=0;i<N;i++)
+	{
+		printf("Inserisci la matricola\n");
+		scanf("%d",&t[i].matricola);
+		printf("Inserisci il cognome\n");         
+		scanf("%s",t[i].cognome);
+		printf("Inserisci il giorno di nascita\n");
+		scanf("%d",&t[i].nascita.giorno);
+		printf("Inserisci in caratteri il mese di nascita\n");
+		scanf("%s",t[i].nascita.mese);
+		printf("Inserisci l'anno di nascita\n");
+		scanf("%d",&t[i].nascita.anno);
+		for(j=0;j<V;j++)
+		{
+			t[i].voti[j]=rand()%10+1;              		//voti random con range da 1 a 10
+		}
+	}
+	printf("\n");
+}
+ 
+void stampa(s_alunno t[])                         		//stampa cognomi, data di nascita e voti degli studenti
+{
+	int i,j;
+	for(i=0;i<N;i++)
+	{
+		printf("Matricola= %d\n",t[i].matricola);
+		printf("Cognome= %s\n",t[i].cognome);
+		printf("Data di nascita= %d-%s-%d\n",t[i].nascita.giorno,t[i].nascita.mese,t[i].nascita.anno);     
+		for(j=0;j<V;j++)
+		{
+			printf("%d\t", t[i].voti[j]);
+		    media(&t[i]);
+	    }
+	}
+}
+
+void media(s_alunno t[])							//calcola la media dei voti	
+{
+	int i;
+	float med, r;
+	for(int i=0;i<V;i++)
+	{
+		med+=(t[i].voti[i]);
+	}
+	r=med/V;
+	printf("\nMedia: %.2f", r);
+}
+
+int TrovaVotoAlto(s_alunno t[])
+{ 
+    int i,j,max=0,r;
+	for(i=0;i<N;i++)
+	{
+		for(j=0;j<V-1;j++)
+		{
+		    if(t[i].voti[j]>max)
+		    {
+			    max=t[i].voti[j];
+			    max=i;
+		    }
+	    }
+    }
+	return max;
+}
+
+void M_cog(s_alunno t[])					//modifica i cognomi, fa si che abbiano il 1° carattere maiuscolo e i restanti minuscoli
+{
+	int i, j;
+	for(i=0;i<N;i++)
+	{
+		if(t[i].cognome[0]>='a'&&t[i].cognome[0]<='z')
+		t[i].cognome[0]-=32;
+		j=1;
+		while(t[i].cognome[j]!='\0')
+		{
+			if(t[i].cognome[j]>='A'&&t[i].cognome[j]<='Z')
+			t[i].cognome[j]+=32;
+			j++;
+		}
+	}
+}
+	
+int ricercamatricola(s_alunno t[], int x)				//cerca una matricola chiesta all'utente, se e' stato trovato restituisce indice, altrimenti -1
+{
+	for(int i=0;i<N;i++)
+	{
+		if(t[i].matricola==x)
+		return i;
+	}
+	return -1;
+}
+
+
+int ricercacognome(s_alunno t[],char s[])   			//cerca un cognome chiesto all'utente, se e' stato trovato restituisce indice, altrimenti -1
+{ 
+ int i,r;
+{ 
+    for(i=0; i<N; i++)
+    {
+	    r=strcmp(t[i].cognome,s);
+	    if(r==0)
+	    return i;
+	}
+    return -1;
+    }
+}
+
+void ordinacognome(s_alunno t[])  						//ordina cognomi degli alunni
+{ int i,j,r;
+s_alunno x;							  					//variabile d'appoggio
+for(i=0; i<N-1; i++)
+{
+	for(j=0; j<N-i-1; j++)
+	{
+		r=strcmp(t[i].cognome,t[i+1].cognome);         //confronto tra i cognomi
+		if(r==1)
+		{	
+		    x=t[i];
+			t[i]=t[i+1];
+			t[i+1]=x;
+	    }
+	}
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
