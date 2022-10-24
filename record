@@ -1,3 +1,4 @@
+
 /*     Wannaku Amelia   *
 *      06/10/2022       *
 *         4H            *
@@ -9,7 +10,7 @@
 allocazione della memoria e controllo dei processi*/
 #include <time.h>     									//libreria per generare numeri random
 #include <string.h>
-#define N 5                                            //N costante per numero di record
+#define N 2                                           //N costante per numero di record
 #define V 8
 #define C 20                                           //C costante carattere del mese e per caratteri del cognome
                   
@@ -94,12 +95,12 @@ void stampa(s_alunno t[])                         		//stampa cognomi, data di na
 		for(j=0;j<V;j++)
 		{
 			printf("%d\t", t[i].voti[j]);
-		    media(&t[i]);
 	    }
+	    media(&t[i]);
 	}
 }
 
-void media(s_alunno t[])							//calcola la media dei voti	
+void media(s_alunno *t)							//calcola la media dei voti	
 {
 	int i;
 	float med, r;
@@ -108,7 +109,7 @@ void media(s_alunno t[])							//calcola la media dei voti
 		med+=(t[i].voti[i]);
 	}
 	r=med/V;
-	printf("\nMedia: %.2f", r);
+	printf("\nMedia: %.2f\n", r);
 }
 
 int TrovaVotoAlto(s_alunno t[])
@@ -187,7 +188,6 @@ for(i=0; i<N-1; i++)
 	}
 }
 }
-
 
 
 
