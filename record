@@ -59,7 +59,7 @@ int main()
 	scanf("%d", &a);
 	r=ricercamatricola(tab, a);
 	printf("\nLa matricola %d si trova in posizione %d \n", a,r);
-	printf("\nInserire il cognome della matricola che si vuole ricercare\n");
+	printf("\nInserire il cognome della matricola che si vuole cercare\n");
 	scanf("%s", st);
 	r=ricercacognome(tab, st);
 	printf("\nLa matricola %s si trova in posizione %d \n", st,r);
