@@ -66,8 +66,8 @@ int main()
 }
 
 void carica(s_alunno t[])											//richiama la funzione di inserimento				
-{
-	for(int i=0;i<N;i++)
+{       int i;
+	for(i=0;i<N;i++)
 	{
 		inserimento(&t[i]);
 	}
@@ -121,7 +121,7 @@ void media(s_alunno *t)													//stampo la media degli alunni
 
 int TrovaVotoAlto(s_alunno t[])												//trovo il voto piu' alto e stampare lo studente il primo col voto piu' alto				
 {
-	int m=INT_MIN;
+	int m=0;
 	int r;
 	for(int i=0;i<N;i++)
 	{
