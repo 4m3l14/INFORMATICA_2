@@ -47,10 +47,10 @@ dal parametro posizione. Restituisce 0 se il record è presente -1 altrimenti.*/
 int correggiRecord (char[], int ); /*visualizza le informazioni del record richiamando la funzione stampaRecord e
 e corregge l’intero record, con i nuovi dati richiesti all’utente.*/
  
-int numeroRecord(char []); //restituisce numero di record
+int numeroRecord(char []); //restituisce il numero di record presenti nel file.
 
 	char nomeFile[]={"file.dat"};
-	int r, s, a;il numero di record presenti nel file.
+	int r, s, a; 
 
 int main()
 {
@@ -85,7 +85,7 @@ int main()
 				}
 				break;
 			case 5:	
-				printf("\nInserire la posizione del r
+				printf("\nInserire la posizione del record");
 				r=correggiRecord(nomeFile, a);
 				//la funzione restituisce -1 se il record non e' presenteecord da correggere\n");
 				scanf("%d", &a);	
