@@ -44,15 +44,16 @@ stampa cognome, eta' e media dei voti. La funzione restituisce la posizione del 
 int stampaRecord(char [], int ); /*stampa le informazioni presenti nel record specificato 
 dal parametro posizione. Restituisce 0 se il record è presente -1 altrimenti.*/
 
-int correggiRecord(char [], int ); /*visualizza le informazioni del record richiamando la funzione stampaRecord e
- corregge l’intero record, con i nuovi dati richiesti all’utente.*/
+int correggiRecord (char[], int ); /*visualizza le informazioni del record richiamando la funzione stampaRecord e
+e corregge l’intero record, con i nuovi dati richiesti all’utente.*/
  
-int numeroRecord(char []); //restituisce il numero di record presenti nel file.
+int numeroRecord(char []); //restituisce numero di record
+
+	char nomeFile[]={"file.dat"};
+	int r, s, a;il numero di record presenti nel file.
 
 int main()
 {
-	char nomeFile[]={"file.dat"};
-	int r, s, a;
 	char st[C];
 	do{
 		s=menu();	
@@ -61,9 +62,9 @@ int main()
 				printf("\nInserire quanti record vuoi\n");
 				scanf("%d", &r);
 				InserisciRecord(nomeFile, r);	
-				break;
 			case 2: 
 				stampaFile(nomeFile);	
+				break;
 				break;
 			case 3:	
 				printf("\nInserisci il cognome da cercare\n");
@@ -84,10 +85,10 @@ int main()
 				}
 				break;
 			case 5:	
-				printf("\nInserire la posizione del record da correggere\n");
-				scanf("%d", &a);
+				printf("\nInserire la posizione del r
 				r=correggiRecord(nomeFile, a);
-				//la funzione restituisce -1 se il record non e' presente	
+				//la funzione restituisce -1 se il record non e' presenteecord da correggere\n");
+				scanf("%d", &a);	
 				if(r==-1){
 					printf("\nErrore, record non trovato\n");
 				}
@@ -216,7 +217,7 @@ int ricercaRecord (char fileName[], char cognome[])
 				printf("Cognome dello studente: %s\n",buffer.cognome);
 				printf("e' nato il %d/%s/%d\n",buffer.nascita.giorno,buffer.nascita.mese,buffer.nascita.anno);
 				eta=anno-buffer.nascita.anno;
-				printf("eta': %d\n",eta);
+				printf("eta': %d\n", eta);
 			}	
 			for(i=0; i<V; i++){
 				media=media+buffer.voti[i];
