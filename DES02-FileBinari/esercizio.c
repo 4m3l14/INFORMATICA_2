@@ -139,12 +139,12 @@ void InserisciRecord(char fileName[], int numRecord)
 			scanf("%s",buffer.nascita.mese);
 			printf("Inserisci l'anno di nascita dello studente:\n");
 			scanf("%d",&buffer.nascita.anno);
-		}
-		for(j=0;j<V;j++){
-			buffer.voti[j]=1+rand()%10;
-		}
+			for(j=0;j<V;j++){
+				buffer.voti[j]=1+rand()%10;
+			}
 		//fwrite funzione che ci permette di scrivere sul file binario
 		fwrite(&buffer,sizeof(studente), 1, pFile);
+		}
 		fclose(pFile);
 	}
 }
