@@ -49,11 +49,11 @@ e corregge l’intero record, con i nuovi dati richiesti all’utente.*/
  
 int numeroRecord(char []); //restituisce il numero di record presenti nel file.
 
-	char nomeFile[]={"file.dat"};
-	int r, s, a; 
 
 int main()
 {
+	char nomeFile[]={"file.dat"};
+	int r, s, a; 
 	char st[C];
 	do{
 		s=menu();	
