@@ -300,7 +300,7 @@ int correggiRecord(char fileName[], int posizione)
 	
 	//controllo del file, che sia aperto senza errori
 	if(pFile!=NULL){
-		//funzione fseek posizionare il puntatore del File nella posizione desiderata 
+		//funzione fseek posizionare il puntatore del file nella posizione desiderata 
 		fseek(pFile, posizione*sizeof(buffer), SEEK_SET); 
 		n=fread(&buffer,sizeof(studente),1,pFile);
 		//chiamata della funzione stampaRecord
@@ -314,7 +314,7 @@ int correggiRecord(char fileName[], int posizione)
 			scanf("%s",buffer.nascita.mese);
 			printf("Inserisci l'anno di nascita dello studente:\n");
 			scanf("%d",&buffer.nascita.anno);
-			//funzione fseek posizionare il puntatore del File nella posizione desiderata 
+			//funzione fseek posizionare il puntatore del file nella posizione desiderata 
 			fseek(pFile, posizione*sizeof(buffer), SEEK_SET);
 			//fwrite funzione che ci permette di scrivere sul file binario
 			fwrite(&buffer,sizeof(studente),1,pFile);
