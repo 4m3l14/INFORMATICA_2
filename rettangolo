@@ -1,0 +1,80 @@
+/******************************************************************************************
+* \mainpage programmazione ad oggetti
+* @brief scrivere un programma con 
+*
+* @author 		Wannaku Amelia
+* @date 		19/01/2023
+* @version 1.0 	19/01/2023 Versione iniziale
+*/
+
+#include <iostream>
+#include <cstdlib>
+#include <iomanip>
+#include <math.h>
+
+//per funzioni cin e cout
+using namespace std;
+
+class Rettangolo{
+	
+private:
+	double h;
+	double b;
+	
+public:
+	Rettangolo R1(){
+		b=1;
+		h=1;
+	}
+		
+	Rettangolo R2(double base, double altezza){
+		h=altezza;
+		b=base;	
+	}
+	
+	double getBase(){
+		return b;
+	}
+	void setBase(double num){
+		b=num;	
+	}
+	double getAltezza(){
+		return h;
+	}
+	void setAltezza(double num){
+		h=num;	
+	}
+	
+	double calcolaArea(){
+	    cout<<"L'area e':" <<
+		return (b*h);	
+	}
+	double calcolaPerimetro(){
+	    cout<<"Il perimetro e':" <<
+		return ((b+h)*2));	
+	}
+	double calcolaDiametro(){
+	    cout<<"Il diametro e':" <<
+	    return (sqrt(pow(b,2)+pow(h,2)))
+	}
+};
+
+int main (){
+	int r;
+	Rettangolo R1 f1;
+	Rettangolo R2 f2;
+	f2.setBase(12);
+	f2.setAltezza(6);
+	r=f2.getBase();
+	cout<<"La base e': "<<r<<end1;
+	r=f2.getAltezza();
+	cout<<"L'altezza e': "<<r<<end1;
+	
+}
+	
+	
+	
+	
+	
+
+
