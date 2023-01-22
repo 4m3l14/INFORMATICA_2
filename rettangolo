@@ -1,6 +1,7 @@
 /******************************************************************************************
 * \mainpage programmazione ad oggetti
-* @brief scrivere un programma con 
+* @brief dichiarare la classe Rettangolo con attributi private: 
+* double base double altezza e si scrivano metodi public
 *
 * @author 		Wannaku Amelia
 * @date 		19/01/2023
@@ -22,12 +23,12 @@ private:
 	double b;
 	
 public:
-	Rettangolo R1(){
+	Rettangolo (){
 		b=1;
 		h=1;
 	}
 		
-	Rettangolo R2(double base, double altezza){
+	Rettangolo (double base, double altezza){
 		h=altezza;
 		b=base;	
 	}
@@ -46,30 +47,28 @@ public:
 	}
 	
 	double calcolaArea(){
-	    cout<<"L'area e':" <<
 		return (b*h);	
 	}
 	double calcolaPerimetro(){
-	    cout<<"Il perimetro e':" <<
-		return ((b+h)*2));	
+		return ((b+h)*2);	
 	}
 	double calcolaDiametro(){
-	    cout<<"Il diametro e':" <<
-	    return (sqrt(pow(b,2)+pow(h,2)))
+	    return (sqrt(pow(b,2)+pow(h,2)));
 	}
 };
 
 int main (){
 	int r;
-	Rettangolo R1 f1;
-	Rettangolo R2 f2;
+	Rettangolo f1;
+	Rettangolo f2;
 	f2.setBase(12);
 	f2.setAltezza(6);
-	r=f2.getBase();
-	cout<<"La base e': "<<r<<end1;
-	r=f2.getAltezza();
-	cout<<"L'altezza e': "<<r<<end1;
-	
+	cout<<"Il perimetro del rettangolo e': "<<f1.calcolaPerimetro()<<endl;
+	cout<<"L'area del rettangolo e': "<<f1.calcolaArea()<<endl;
+	cout<<"Il diametro del rettangolo e': "<<f1.calcolaDiametro()<<endl;
+	cout<<"Il perimetro del rettangolo e': "<<f2.calcolaPerimetro()<<endl;
+	cout<<"L'area del rettangolo e': "<<f2.calcolaArea()<<endl;
+	cout<<"Il diametro del rettangolo e': "<<f2.calcolaDiametro()<<endl;
 }
 	
 	
