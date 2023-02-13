@@ -1,1 +1,91 @@
+// Classe LED
+class LED {
+  private:
+    int pin; // Pin del LED
+  	int stato;  //stato attuale del LED
+  
+  public:
+  LED(int p) {
+    pin=p;
+    pinMode(pin, OUTPUT);
+  }
+  
+  void accendi() {
+      digitalWrite(pin, HIGH);
+      //stato del LED acceso
+      stato=HIGH;
+    }
+ // Metodo per spegnere il LED
+    void spegni() {
+      digitalWrite(pin, LOW);
+      //stato del LED spento
+      stato=LOW;
+    }
+  
+  //Metodo inverti (da accesso a spento e viceversa)
+  void inverti(){
+   //se statoLed è acceso io lo devo spegnere
+      if(stato==HIGH)
+        spegni();
+      else
+        accendi();
+    } 
+  
+   void Lampeggio(int nrLampeggi){
+    for(int i=0; i<nrLampeggi; i++){
+      inverti();
+      delay(100);
+      inverti();
+      delay(100);
+    }
+  }
+};
+  
+ 
+class Switch{
+  private:
+	int pin;
 
+  public:
+    Switch(int p){
+      pin=p;
+      pinMode(pin, INPUT_PULLUP);
+    }
+    
+  int press(){
+    if(digitalRead(pin)==LOW){
+      return 1;
+    }else {
+      return 0;
+    }
+  }
+  
+  int click(){
+    if(press()){
+      while(press());
+      return 1;
+    }else{
+      return 0;
+    }
+  }
+};
+
+
+LED led1(12);
+LED led2(13);
+Switch pulsante(2);
+  
+void setup() { // Inizializzazione 
+  led1.accendi();
+  led2.spegni();
+  led1.Lampeggio(2);
+  led2.Lampeggio(3);
+}
+
+void loop() { // Loop infinito
+  if(pulsante.press()) {
+    led1.accendi();
+  } else {
+    led1.spegni();
+  }
+}
