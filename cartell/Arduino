@@ -1,0 +1,72 @@
+// C++ code
+// Classe LED
+class LED {
+  private:
+    int pin; // Pin del LED
+  	int stato;  //stato attuale del LED
+
+  public:
+    /* Costruttore: imposta la modalità del pin del 
+  LED come output*/
+    LED(int p) {
+      pin = p;
+      pinMode(pin, OUTPUT);
+    }
+  
+    // Metodo per accendere il LED
+    void accendi() {
+      digitalWrite(pin, HIGH);
+      //stato del LED acceso
+      stato=HIGH;
+    }
+
+    // Metodo per spegnere il LED
+    void spegni() {
+      digitalWrite(pin, LOW);
+      //stato del LED spento
+      stato=LOW;
+    }
+  
+  //Metodo inverti (da accesso a spento e viceversa)
+  void inverti(){
+   //se statoLed è acceso io lo devo spegnere
+      if(stato==HIGH)
+        spegni();
+      else
+        accendi();
+    } 
+  
+  void Lampeggio(int nrLampeggi){
+    for(int i=0; i<nrLampeggi; i++){
+      spegni();
+      delay(500);
+      accendi();
+    }
+  }
+  
+  void Test(int numeroTest){
+    accendi();
+    inverti();
+    delay(5000);
+    inverti();
+    delay(5000);
+    Lampeggio(14);
+  }
+};
+
+// Crea un oggetto LED sulla porta 11
+LED led(11);
+
+void setup() {
+  led.accendi();
+}
+
+void loop() {
+  // Accendi il LED
+  //led.accendi();
+  // Aspetta per un secondo
+  // Spegni il LED
+  //led.spegni();
+  // Aspetta per un secondo
+  led.Lampeggio(10);
+}
