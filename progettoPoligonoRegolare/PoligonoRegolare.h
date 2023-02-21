@@ -21,7 +21,7 @@ class Rombo:public PoligonoRegolare
 		double DiagonaleMaggiore;
 	public:
 		Rombo();
-		Rombo(MisuraLato,DiagonaleMaggiore);
+		Rombo(double,double);
 		double getDiagonaleMaggiore();
 		void setDiagonaleMaggiore(double);
 	    double DiagonaleMinore();
