@@ -36,16 +36,17 @@ Rombo::Rombo():PoligonoRegolare(){
     MisuraLato=5;
     DiagonaleMaggiore=8;
 }
-Rombo::Rombo(int n,double m, double d):PoligonoRegolare(n,m,d){
+Rombo::Rombo(int n, double m, double d):PoligonoRegolare(n,m,d){
    numeroLati=n;
    MisuraLato=m;
    DiagonaleMaggiore=d;
 }
-double Rombo::DiagonaleMinore(){
-    return 2*area/DiagonaleMaggiore;
-}
+
 double Rombo::area(){
     return 2*sqrt(pow(getMisuraLato(),2)-pow(DiagonaleMaggiore/2,2));
+}
+double Rombo::DiagonaleMinore(){
+    return 2*area/DiagonaleMaggiore;
 }
 double Rombo::perimetro(){
     return MisuraLato*numeroLati;
