@@ -2,7 +2,7 @@
 #include <math.h>
 #include "PoligonoRegolare.h"
 
-using namespace.h
+using namespace std;
 
 //PoligonoRegolare
 PoligonoRegolare::PoligonoRegolare(){
