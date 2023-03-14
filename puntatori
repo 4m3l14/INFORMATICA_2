@@ -15,9 +15,11 @@ int main(){
 	int *puntatore;
 	carica(vet);
 	stampa(vet);
+	cout<<endl;
 	cout<<"Inserisci un elemento: "<<endl;
 	cin>>"%d",&a>>;
 	puntatore=ricerca(vet,a);
+	cout<<endl;
 	if(puntatore>=0){
 		cout<<"indirizzo elemento: %ld"<<puntatore<<endl;
 	}
