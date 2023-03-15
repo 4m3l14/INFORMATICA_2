@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <iostream>
+using namespace std;
 #define N 4
 
 void carica(int v[]);
@@ -11,17 +12,15 @@ int *ricerca(int v[],int x);
 int main(){
 	srand(time(NULL));
 	int vet[N];
-	int a;
+	int a, r;
 	int *puntatore;
-	carica(vet);
-	stampa(vet);
-	cout<<endl;
+	carica(puntatore);
+	stampa(puntatore);
 	cout<<"Inserisci un elemento: "<<endl;
-	cin>>"%d",&a>>;
-	puntatore=ricerca(vet,a);
-	cout<<endl;
-	if(puntatore>=0){
-		cout<<"indirizzo elemento: %ld"<<puntatore<<endl;
+	cin>>a;
+	r=ricerca(puntatore,a);
+	if(r!=NULL){
+		cout<<"Il numero si trova nell'indice"<<r<<endl;
 	}
 	else{
 		cout<<"Elemento non trovato!"<<endl;
@@ -38,8 +37,7 @@ void carica(int v[]){
 void stampa(int v[]){
 	int *p;
 	for(p=v;p-v<N;p++){
-		cout<<"\n"<<;
-		cout<<"Elemento in posizione %d: %d"<<p-v,*p<<endl;
+		cout<<*p<<endl;
 	}
 }
 
