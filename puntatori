@@ -1,50 +1,57 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <iostream>
-using namespace std;
 #define N 4
 
 void carica(int v[]);
 void stampa(int v[]);
-int *ricerca(int v[],int x);
+int *ricerca2(int v[],int x);
 
-int main(){
+int main()
+{
 	srand(time(NULL));
 	int vet[N];
-	int a, r;
-	int *puntatore;
-	carica(puntatore);
-	stampa(puntatore);
-	cout<<"Inserisci un elemento: "<<endl;
-	cin>>a;
-	r=ricerca(puntatore,a);
-	if(r!=NULL){
-		cout<<"Il numero si trova nell'indice"<<r<<endl;
+	int a,b,r;
+	int *r;
+	carica(vet);
+	stampa(vet);
+	printf("\n");
+	printf("Inserisci un elemento: ");
+	scanf("%d",&a);
+	r=ricerca(vet,a);
+	printf("\n");
+	if(r>=0){
+		printf("indirizzo elemento: %ld\n",r);
 	}
 	else{
-		cout<<"Elemento non trovato!"<<endl;
+		printf("Elemento non trovato!\n");
 	}
 }
 
-void carica(int v[]){
+void carica(int v[])
+{
 	int *p;
 	for(p=v;p-v<N;p++){
 		*p=50+rand()%11;
 	}
 }
 
-void stampa(int v[]){
+void stampa(int v[])
+{
 	int *p;
-	for(p=v;p-v<N;p++){
-		cout<<*p<<endl;
+	for(p=v;p-v<N;p++)
+	{
+		printf("\n");
+		printf("Elemento in posizione %d: %d\n",p-v,*p);
 	}
 }
 
-int *ricerca(int v[],int x){
+int *ricerca(int v[],int x)
+{
 	int *p;
-	for(p=v;p-v<N;p++){
-		if(*p==x){
+	for(p=v;p-v<N;p++)
+	{
+		if(*p==n){
 			return p;
 		}
 	}
