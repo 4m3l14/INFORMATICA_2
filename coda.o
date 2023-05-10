@@ -1,0 +1,95 @@
+class Coda{
+	private:
+		int *vet;
+    int size;
+		int inizio; //inizio coda
+		int fine; //fine coda
+		int quanti; //serve per contare quanti elementi sono presenti nella coda
+	public:
+		Coda();
+    Coda(int);
+		bool isFull();
+		bool isEmpty();
+		bool push(int,int);
+		bool pop();
+		void top();
+		void stampa();};
+    
+    
+#include<iostream>
+#include<Coda.h>
+#include<stdlib.h>
+
+using namespace std;
+
+Coda::Coda(){
+	int size=3;
+	vet=new int[size];
+	fine=0;}
+
+Coda::Coda(int d){      
+	vet=new int [d];
+	fine=0;
+	size=d;}
+
+bool Coda::isFull(){
+	if(fine == size){
+		return true;}
+	return false;}
+
+bool Coda::isEmpty(){
+	if(fine == 0){
+		return true;}
+	return false;}
+
+bool Coda::push(int x,int y){
+	int z;
+	z = isFull();
+	if(z == false){
+		coda[inizio] = x;
+		coda[fine] = y;
+		fine++;
+		return true;}
+	if(inizio > 0 && inizio < N){
+		if(fine % N == 0){
+			fine = 0;
+			coda[fine] = y;
+			fine++;
+			return true;}}
+	return false;}
+
+bool coda::pop(){
+	int x,y;
+	cout<<"inserisci 1 per togliere l'ultimo numero"<<endl;
+	cout<<"inserisci 2 per togliere il primo numero"<<endl;
+	cin>>x;
+	
+		y = isEmpty();
+		
+	switch(x){
+		case 1:
+			
+			if(y == false){
+				fine--;
+				cout<<"sono riuscito a togliere l'ultimo numero"<<endl;
+				return x;}
+			else{
+				return 0;}
+		case 2:
+			
+			if(y == false){
+				coda[inizio] = coda[fine-1];
+				fine--;
+				inizio++;
+				cout<<"sono riuscito a togliere il primo numero"<<endl;
+				return x;}
+			else{
+				return 0;}}} 
+
+void coda::top(){
+	cout<<coda[fine-1]<<endl;}
+
+void coda::stampa(){
+	int i;
+	for(i=0;i<fine;i++){
+		cout<<coda[i]<<endl;}}
