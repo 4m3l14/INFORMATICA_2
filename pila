@@ -1,0 +1,86 @@
+class Pila
+{
+	private:
+		int *vet;       //puntatore di array
+		int size;       //dimensione array
+		int fine;       //ultimo elemento
+	public:
+		Pila();         //costruttore di default
+		Pila(int);      //costruttore con size come parametro
+		bool isEmpty(); //controlla se è vuota
+		bool isFull();  //controlla se è piena
+		bool pop();  //estrae primo elemento visibile
+		bool top();  //visulaizza primo elemento visibile
+		bool push(int); //inserisce un elemento
+		void stampa();
+};
+
+#include <iostream>
+#include <stdlib.h>
+#include <Pila.h>
+
+using namespace std;
+
+Pila::Pila(){
+	int size=3;
+	vet=new int[size];
+	fine=0;}
+
+Pila::Pila(int d){      
+	vet=new int [d];
+	fine=0;
+	size=d;}
+
+bool Pila::isEmpty(){
+	if(fine==0){
+		return true;}
+	return false;}
+
+bool Pila::isFull(){
+	if(fine==size){
+		return true;}
+	return false;}
+
+bool Pila::push(int x){
+	if(!isFull()){
+		vet[fine]=x;
+		fine++;
+		return true;}
+	return false;}
+
+bool Pila::pop(){
+	if(!isEmpty()){
+		fine--;
+		return true;}
+	return false;}
+
+bool Pila::top(){
+	cout<<"Elemento in alto "<<vet[fine-1]<<endl;}
+
+void Pila::stampa(){
+	int i;
+	for(i=0;i<fine;i++){
+		cout<<"Array: "<<vet[i]<<endl;}}
+    
+#include <iostream>
+#include <stdlib.h>
+#include <Pila.h>
+
+using namespace std;
+
+int main(){
+	Pila p1;
+	bool r;
+	int i;
+	for(i=0;i<5;i++){
+		r=p1.push(4);}
+	r=p1.pop();
+	r=p1.top();
+	p1.stampa();
+	
+	Pila p2(2);
+	for(i=0;i<2;i++){
+		r=p2.push(3);}
+	r=p2.pop();
+	r=p1.top();
+	p2.stampa();}
