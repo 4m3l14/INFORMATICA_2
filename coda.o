@@ -93,3 +93,25 @@ void coda::stampa(){
 	int i;
 	for(i=0;i<fine;i++){
 		cout<<coda[i]<<endl;}}
+
+#include<iostream>
+#include<Coda.h>
+#include<stdlib.h>
+
+using namespace std;
+
+int main(){
+	Coda c1;
+	int i;
+	bool r;
+	
+	for(i=0;i<4;i++){  
+	    c1.push(2,7);}
+	
+	c1.stampa();
+	
+	cout<<"numero finale della coda: "<<endl;
+	c1.top();
+	for(i=0;i<2;i++){
+		r= c1.pop();
+		c1.stampa();}}
