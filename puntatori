@@ -5,7 +5,7 @@
 
 void carica(int v[]);
 void stampa(int v[]);
-int *ricerca2(int v[],int x);
+int *ricerca(int v[],int x);
 
 int main()
 {
