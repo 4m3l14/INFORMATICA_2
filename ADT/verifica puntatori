@@ -1,0 +1,65 @@
+class ADT{
+	private:
+		int *p;
+    	int size;
+		int end; 
+	public:
+    	ADT(int);
+		bool isFull();
+		bool isEmpty();
+		int GetFine(int);
+		int GetInizio(int);
+		int SommaElementi(int);
+		int Trova(int);
+		bool InserisciPos(int, int);
+		bool cancellaPos(int);
+};
+
+class Coda:public ADT{
+
+	public:
+		Coda(int);
+		bool InserisciCoda(int);
+		bool CancellaCoda(void);
+};
+
+class Pila:public ADT{
+	private:
+		int numIns;
+		int numCanc;
+	public:
+		Pila(int, int, int);
+		bool InserisciPila(int);
+		bool CancellaPila(void);
+};
+
+
+#include<iostream>
+#include<ADT.h>
+#include<stdlib.h>
+
+using namespace std;
+
+ADT::ADT(int dim){ 
+	size=dim;     
+	p=new int [size];
+	end=-1;}
+
+bool ADT::isFull(){
+		return (end==size);}
+
+bool ADT::isEmpty(){
+		return (end==-1);}
+	
+int ADT::GetFine(){
+	if(end!=-1){
+		return p[end];}
+		return end;}
+
+int ADT::GetInizio(){
+		if(isEmpty()){
+		return -1;}
+		return p[0];}
+		
+
+
