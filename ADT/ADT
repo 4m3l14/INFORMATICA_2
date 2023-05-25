@@ -7,16 +7,17 @@ class ADT{
     	ADT(int);
 		bool isFull();
 		bool isEmpty();
-		int GetFine(int);
-		int GetInizio(int);
-		int SommaElementi(int);
+		int GetFine();
+		int GetInizio();
+		int SommaElementi();
 		int Trova(int);
-		bool InserisciPos(int, int);
-		bool cancellaPos(int);
+		bool InserisciInPosizione(int, int);
+		bool CancellaInPosizione(int);
 };
 
 class Coda:public ADT{
-
+	private:
+		int first;
 	public:
 		Coda(int);
 		bool InserisciCoda(int);
@@ -35,7 +36,7 @@ class Pila:public ADT{
 
 
 #include<iostream>
-#include<ADT.h>
+#include "ADT1.h"
 #include<stdlib.h>
 
 using namespace std;
@@ -60,6 +61,55 @@ int ADT::GetInizio(){
 		if(isEmpty()){
 		return -1;}
 		return p[0];}
+
+
+int ADT::Trova(int x){
+	int cont=0;
+	for(int i=0;i<end;i++)
+		if(p[i]==x)
+			cont++;
+	return cont;	
+}
+int ADT::SommaElementi(){
+	int somma=0, i;
+	for(i=0;i<end;i++)
+		somma+=p[i];
+	return somma;
+}
+
+bool ADT::InserisciInPosizione(int elem, int indice){
+	if(isFull())
+		return false;
+	if(isEmpty()){
+		p[0]=elem;
+		end=0;
+		return true;
+	}
+	for(int i=end+1;i>indice;i--)
+		p[i]=p[i-1];
+	
+	p[indice]=elem;
+	return true;		
+}
+bool ADT::CancellaInPosizione(int indice){
+	
+	if(isEmpty()){
+		return false;
+	}
+	for(int i=0;i<end;i++)
+		p[i]=p[i+1];
+	end--;
+	return true;		
+}
+Coda(int x):ADT{
+	first-1;
+}
+bool InserisciCoda(int):ADT{
+	if(isEmpty())
+	if(isEmpty()){
+		
+	}
+}
 		
 
 
