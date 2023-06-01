@@ -1,59 +1,153 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#define N 4
+class ADT{
+	protected:
+		int *p;
+    	int size;
+		int end; 
+	public:
+    	ADT(int);
+		bool isFull();
+		bool isEmpty();
+		int GetFine();
+		int GetInizio();
+		int SommaElementi();
+		int Trova(int);
+		bool InserisciInPosizione(int, int);
+		bool CancellaInPosizione(int);
+};
 
-void carica(int v[]);
-void stampa(int v[]);
-int *ricerca(int v[],int x);
+class Coda:public ADT{
+	public:
+		Coda(int);
+		bool InserisciCoda(int);
+		bool CancellaCoda(void);
+};
 
-int main()
-{
-	srand(time(NULL));
-	int vet[N];
-	int a,b,r;
-	int *r;
-	carica(vet);
-	stampa(vet);
-	printf("\n");
-	printf("Inserisci un elemento: ");
-	scanf("%d",&a);
-	r=ricerca(vet,a);
-	printf("\n");
-	if(r>=0){
-		printf("indirizzo elemento: %ld\n",r);
+class Pila:public ADT{
+	private:
+		int numIns;
+		int numCanc;
+	public:
+		Pila(int);
+		bool InserisciPila(int);
+		bool CancellaPila(void);
+};
+
+#include<iostream>
+#include "ADT2.h"
+#include<stdlib.h>
+
+using namespace std;
+
+ADT::ADT(int dim){ 
+	size=dim;     
+	p=new int [size];
+	end=-1;}
+
+bool ADT::isFull(){
+		return (end==size-1);}
+
+bool ADT::isEmpty(){
+		return (end==-1);}
+	
+int ADT::GetFine(){
+	if(isEmpty()){
+		return -1;}
+		else{
+		return p[end];}
+	}	
+
+int ADT::GetInizio(){
+		if(isEmpty()){
+		return -1;}
+		else{
+		return p[0];}}
+
+
+int ADT::Trova(int x){
+if(!isEmpty()){
+	int cont=0;
+	int *v;
+	for(v=p;v-p<end;v++){
+		if(p[*v]==x)
+			cont++;}
+		return cont;			
+			}
+	else{
+	return -1;}
+}
+
+int ADT::SommaElementi(){
+	int somma=0;
+	int *v;
+	for(v=p;v-p<end;v++){
+		somma+=p[*v];}
+	return somma;
+}
+
+bool ADT::InserisciInPosizione(int elem, int indice){
+	if(!isFull()){
+		if(isEmpty()){
+		end=0;
+		p[end]==elem;
+		return true;}
+	for(int i=end; i>indice;i--){
+		p[i+1]=p[i];}
+		p[indice]=elem;
+	return true;}
+	else{
+		return -1; //array pieno
+	}
+}		
+
+bool ADT::CancellaInPosizione(int indice){
+	if(!isEmpty()){
+	for(int i=indice; i>end; i++){
+		p[i]=p[i+1];}
+	end--;	
+	return true;
 	}
 	else{
-		printf("Elemento non trovato!\n");
+		return false;
 	}
 }
 
-void carica(int v[])
-{
-	int *p;
-	for(p=v;p-v<N;p++){
-		*p=50+rand()%11;
-	}
+Coda::Coda(int x):ADT(x){}
+
+bool Coda::InserisciCoda(int elem){
+	return ADT::InserisciInPosizione(elem,end+1);
 }
 
-void stampa(int v[])
-{
-	int *p;
-	for(p=v;p-v<N;p++)
-	{
-		printf("\n");
-		printf("Elemento in posizione %d: %d\n",p-v,*p);
-	}
+bool Coda::CancellaCoda(void){
+	return ADT::CancellaInPosizione(0);
 }
 
-int *ricerca(int v[],int x)
-{
-	int *p;
-	for(p=v;p-v<N;p++)
-	{
-		if(*p==n){
-			return p;
-		}
-	}
-	return NULL;
+Pila::Pila(int x):ADT (x){ 
+	numIns=0;
+	numCanc=0;
+}
+
+bool Pila::InserisciPila(int elem){
+	return ADT::InserisciInPosizione(elem,end+1);
+	numIns++;
+}
+
+bool Pila::CancellaPila(void){
+	return ADT::CancellaInPosizione(0);
+	numCanc++;
+}
+
+#include <iostream>
+#include "ADT2.h"
+
+using namespace std;
+
+int main() {
+	int a;
+	ADT hit(6);
+	Coda c(3);
+	Pila pi(4);
+	hit.InserisciInPosizione(4,5);
+	a=hit.GetInizio();
+	cout<<a<<endl;
+	return 0;
 }
