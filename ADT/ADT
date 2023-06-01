@@ -1,5 +1,5 @@
 class ADT{
-	private:
+	protected:
 		int *p;
     	int size;
 		int end; 
@@ -32,9 +32,8 @@ class Pila:public ADT{
 		bool CancellaPila(void);
 };
 
-
 #include<iostream>
-#include "ADT1.h"
+#include "ADT2.h"
 #include<stdlib.h>
 
 using namespace std;
@@ -55,6 +54,7 @@ int ADT::GetFine(){
 		return -1;}
 		else{
 		return p[end];}
+	}	
 
 int ADT::GetInizio(){
 		if(isEmpty()){
@@ -68,9 +68,10 @@ if(!isEmpty()){
 	int cont=0;
 	int *v;
 	for(v=p;v-p<end;v++){
-		if(p[v]==x)
-			cont++;}}
-	return cont;	
+		if(p[*v]==x)
+			cont++;}
+		return cont;			
+			}
 	else{
 	return -1;}
 }
@@ -79,41 +80,74 @@ int ADT::SommaElementi(){
 	int somma=0;
 	int *v;
 	for(v=p;v-p<end;v++){
-		somma+=p[v];}
+		somma+=p[*v];}
 	return somma;
 }
 
 bool ADT::InserisciInPosizione(int elem, int indice){
 	if(!isFull()){
-	if(isEmpty()){
-	end=0;
-	p[end]==elem;}
+		if(isEmpty()){
+		end=0;
+		p[end]==elem;
+		return true;}
 	for(int i=end; i>indice;i--){
-	p[i+1]=p[i];}
-	p[indice]=elem;
+		p[i+1]=p[i];}
+		p[indice]=elem;
 	return true;}
-	
-	}		
-}
+	else{
+		return -1; //array pieno
+	}
+}		
+
 bool ADT::CancellaInPosizione(int indice){
-	
-	if(isEmpty()){
+	if(!isEmpty()){
+	for(int i=indice; i>end; i++){
+		p[i]=p[i+1];}
+	end--;	
+	return true;
+	}
+	else{
 		return false;
 	}
-	for(int i=0;i<end;i++)
-		p[i]=p[i+1];
-	end--;
-	return true;		
 }
-Coda(int x):ADT{
-	first-1;
-}
-bool InserisciCoda(int):ADT{
-	if(isEmpty())
-	if(isEmpty()){
-		
-	}
-}
-		
 
+Coda::Coda(int x):ADT(x){}
 
+bool Coda::InserisciCoda(int elem){
+	return ADT::InserisciInPosizione(elem,end+1);
+}
+
+bool Coda::CancellaCoda(void){
+	return ADT::CancellaInPosizione(0);
+}
+
+Pila::Pila(int x):ADT (x){ 
+	numIns=0;
+	numCanc=0;
+}
+
+bool Pila::InserisciPila(int elem){
+	return ADT::InserisciInPosizione(elem,end+1);
+	numIns++;
+}
+
+bool Pila::CancellaPila(void){
+	return ADT::CancellaInPosizione(0);
+	numCanc++;
+}
+
+#include <iostream>
+#include "ADT2.h"
+
+using namespace std;
+
+int main() {
+	int a;
+	ADT hit(6);
+	Coda c(3);
+	Pila pi(4);
+	hit.InserisciInPosizione(4,5);
+	a=hit.GetInizio();
+	cout<<a<<endl;
+	return 0;
+}
