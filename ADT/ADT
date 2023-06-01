@@ -16,8 +16,6 @@ class ADT{
 };
 
 class Coda:public ADT{
-	private:
-		int first;
 	public:
 		Coda(int);
 		bool InserisciCoda(int);
@@ -29,7 +27,7 @@ class Pila:public ADT{
 		int numIns;
 		int numCanc;
 	public:
-		Pila(int, int, int);
+		Pila(int);
 		bool InserisciPila(int);
 		bool CancellaPila(void);
 };
@@ -47,29 +45,36 @@ ADT::ADT(int dim){
 	end=-1;}
 
 bool ADT::isFull(){
-		return (end==size);}
+		return (end==size-1);}
 
 bool ADT::isEmpty(){
 		return (end==-1);}
 	
 int ADT::GetFine(){
-	if(end!=-1){
+	if(isEmpty()){
+		return -1;}
+		else{
 		return p[end];}
-		return end;}
 
 int ADT::GetInizio(){
 		if(isEmpty()){
 		return -1;}
-		return p[0];}
+		else{
+		return p[0];}}
 
 
 int ADT::Trova(int x){
+if(!isEmpty()){
 	int cont=0;
+	int *v;
 	for(int i=0;i<end;i++)
 		if(p[i]==x)
 			cont++;
-	return cont;	
+	return cont;}	
+	else{
+	return -1;}
 }
+
 int ADT::SommaElementi(){
 	int somma=0, i;
 	for(i=0;i<end;i++)
