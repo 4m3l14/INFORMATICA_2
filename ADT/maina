@@ -1,0 +1,15 @@
+#include <iostream>
+#include "ADT2.h"
+
+using namespace std;
+
+int main() {
+	int a;
+	ADT hit(6);
+	Coda c(3);
+	Pila pi(4);
+	hit.InserisciInPosizione(4,5);
+	a=hit.GetInizio();
+	cout<<a<<endl;
+	return 0;
+}
