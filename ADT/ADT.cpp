@@ -93,13 +93,13 @@ Pila::Pila(int x):ADT (x){
 }
 
 bool Pila::InserisciPila(int elem){
-	return ADT::InserisciInPosizione(elem,end+1);
 	numIns++;
+	return ADT::InserisciInPosizione(elem,end+1);
 }
 
 bool Pila::CancellaPila(void){
-	return ADT::CancellaInPosizione(0);
 	numCanc++;
+	return ADT::CancellaInPosizione(0);
 }
 
 
